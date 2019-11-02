@@ -3,6 +3,7 @@ var express    = require("express"),
     bodyParser = require("body-parser"),
     mongoose   = require("mongoose"),
     methodOverride = require("method-override"),
+    seedDB = require('./seed'),
     people = require('./models/people'),
     tables = require('./models/tables'),
     seedDb
@@ -19,11 +20,38 @@ app.use(methodOverride("_method"));
 var port = process.env.PORT || 3000;
 var ip = process.env.IP || '127.0.0.1';
 
-var tableCalculated = false;
+
+//seedDB();
 
 app.get('/', function(req, res){
     var date = new Date();
     var month = date.getMonth();
+    var year = date.getFullYear();
+    if (month == 9 || month == 10 || month == 11) 
+    {
+        tables.find({year: year}, function(err, data){
+            if (err) {
+                console.log(err);
+            } else {
+                if (data.length === 0)
+                {
+                    // TODO calculate new table
+                    var peopleList = [];
+                    people.find({}, function(err, data){
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            data.forEach(person => {
+                                console.log(person);
+                                peopleList.push(person);
+                            });
+                            console.log(peopleList);
+                        }
+                    });
+                }
+            }
+        });
+    }
     res.render('index', {month: month});
 });
 
