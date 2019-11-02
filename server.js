@@ -4,7 +4,8 @@ var express    = require("express"),
     mongoose   = require("mongoose"),
     methodOverride = require("method-override"),
     people = require('./models/people'),
-    tables = require('./models/tables');
+    tables = require('./models/tables'),
+    seedDb
 
 var connectUrl = process.env.DATABASE || "mongodb://localhost:27017/fenwick_christmas";
 mongoose.connect(connectUrl, {useNewUrlParser: true, useUnifiedTopology: true });
