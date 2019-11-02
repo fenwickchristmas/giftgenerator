@@ -4,15 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Fenwick Christmas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <h1><%= month %></h1>
     <div class="container">
+      <br />
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>Fenwick Christmas</h1>
+            </div>
+        </div>
+        <br />
         <div class="row">
             <div class="col-12">
+                <h4 class="text-center">Its that time of the year again</h4>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center"><%= year %></h4>
+            </div>
+        </div>
+        <br />
+        <div class="row text-center">
+            <div class="col-8" style="margin: 0 auto;">
                 <table class="table table-striped">
                     <thead>
                       <tr>
@@ -21,18 +39,56 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                      </tr>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                      </tr>
+                      <% table.forEach(function(entry){%>
+                        <tr>
+                          <td><%= entry.giving %></td>
+                          <td><%= entry.receiving %></td>
+                        </tr>
+                      <% }); %>
                     </tbody>
                   </table>
             </div>
         </div>
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">This list will automatically update on the 1st October of every year</h4>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Previous Year:</h4>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center"><%= previousYear %></h4>
+            </div>
+        </div>
+        <br />
+        <div class="row text-center">
+            <div class="col-8" style="margin: 0 auto;">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Giving</th>
+                        <th scope="col">Recieving</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% previousTable.forEach(function(entry){%>
+                        <tr>
+                          <td><%= entry.giving %></td>
+                          <td><%= entry.receiving %></td>
+                        </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <br />
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
